@@ -1,0 +1,65 @@
+CREATE TABLE Customer
+(
+  Name varhcar(20) NOT NULL,
+  ID INT NOT NULL,
+  Age INT NOT NULL,
+  PhoneNumber INT NOT NULL,
+  Address varhcar(20)NOT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE (PhoneNumber)
+);
+
+CREATE TABLE Event
+(
+  Name varhcar(20) NOT NULL,
+  EventID INT NOT NULL,
+  PRIMARY KEY (EventID)
+);
+
+CREATE TABLE Billing
+(
+  Price INT NOT NULL,
+  BillingID INT NOT NULL,
+  Tax INT NOT NULL,
+  Date varhcar(20)T NOT NULL,
+  PRIMARY KEY (BillingID)
+);
+
+CREATE TABLE Ticket
+(
+  SaloonNumber varhcar(20) NOT NULL,
+  SeatNumber varhcar(20) NOT NULL,
+  TicketID INT NOT NULL,
+  Price INT NOT NULL,
+  Day varhcar(20) NOT NULL,
+  Time varhcar(20) NOT NULL,
+  EventID INT NOT NULL,
+  PRIMARY KEY (TicketID),
+  FOREIGN KEY (EventID) REFERENCES Event(EventID)
+);
+
+CREATE TABLE Sales_Agent
+(
+  AgentType varhcar(20) NOT NULL,
+  AgentNumber INT NOT NULL,
+  PRIMARY KEY (AgentNumber)
+);
+
+CREATE TABLE get
+(
+  ID INT NOT NULL,
+  EventID INT NOT NULL,
+  AgentNumber INT NOT NULL,
+  FOREIGN KEY (ID) REFERENCES Customer(ID),
+  FOREIGN KEY (EventID) REFERENCES Event(EventID),
+  FOREIGN KEY (AgentNumber) REFERENCES Sales_Agent(AgentNumber)
+);
+
+CREATE TABLE gives
+(
+  AgentNumber INT NOT NULL,
+  BillingID INT NOT NULL,
+  PRIMARY KEY (AgentNumber, BillingID),
+  FOREIGN KEY (AgentNumber) REFERENCES Sales_Agent(AgentNumber),
+  FOREIGN KEY (BillingID) REFERENCES Billing(BillingID)
+);

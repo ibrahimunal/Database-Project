@@ -1,0 +1,5 @@
+ýn this project it is assumed that customer has infinite right to choice events. There is no any limit. 
+Project aims to add events to the customers.
+I had some problems in interface so ý could not success someof the things in my mind
+so it's both interface and console based program.
+I tried my best in order to finish the project by myself. 
